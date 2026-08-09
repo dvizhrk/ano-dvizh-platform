@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АНО ДВИЖ | Движение — Жизнь | Официальный сайт</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#0F172A',
+                        brandSlate: '#1E293B',
+                        brandCyan: '#0EA5E9',
+                        brandOrange: '#F97316',
+                        brandLight: '#F8FAFC'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-brandLight text-brandDark font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Верхняя плашка статуса -->
+    <div class="bg-brandDark text-white text-xs py-2 px-4 text-center border-b border-slate-700">
+        <span class="inline-block bg-brandOrange text-white font-bold px-2 py-0.5 rounded mr-2">ГРАНТЫ 2024–2027</span>
+        Победитель конкурсов Грантов Главы Республики Коми и Фонда президентских грантов
+    </div>
+
+    <!-- Шапка сайта -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Логотип -->
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brandDark via-brandCyan to-brandOrange flex items-center justify-center text-white font-bold text-xl shadow">
+                    <i class="fa-solid font-bold text-lg">Д</i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-brandDark block">АНО «ДВИЖ»</span>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 block">Движение — Жизнь</span>
+                </div>
+            </a>
+
+            <!-- Навигация -->
+            <nav class="hidden md:flex space-x-8 font-medium text-sm text-slate-700">
+                <a href="index.html" class="text-brandCyan font-semibold">Главная</a>
+                <a href="projects.html" class="hover:text-brandCyan transition">Проекты и Гранты</a>
+                <a href="#mission" class="hover:text-brandCyan transition">Миссия</a>
+                <a href="#team" class="hover:text-brandCyan transition">Команда</a>
+                <a href="#docs" class="hover:text-brandCyan transition">Документы</a>
+            </nav>
+
+            <!-- Кнопка -->
+            <div>
+                <a href="#contacts" class="bg-brandCyan hover:bg-sky-600 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition shadow-md">
+                    Контакты
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главный экран (Hero Section) -->
+    <section class="bg-gradient-to-b from-slate-900 to-brandDark text-white py-20 px-4">
+        <div class="max-w-7xl mx-auto text-center md:text-left grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700 text-brandCyan text-xs font-medium">
+                    <i class="fa-solid fa-heart-pulse text-brandOrange"></i>
+                    <span>Социальная IT-экосистема Республики Коми</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+                    Развиваем культуру <span class="text-brandCyan">здоровья</span> и физической активности
+                </h1>
+                <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+                    Коми региональная автономная некоммерческая организация по повышению физической активности граждан и популяризации здорового образа жизни «Движение — Жизнь».
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 justify-center md:justify-start">
+                    <a href="projects.html" class="bg-brandOrange hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-lg text-center transition shadow-lg">
+                        Наши проекты
+                    </a>
+                    <a href="#docs" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-lg text-center transition border border-slate-700">
+                        Официальные документы
+                    </a>
+                </div>
+            </div>
+
+            <!-- Блок ключевых показателей -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-800/60 p-6 rounded-xl border border-slate-700/80 backdrop-blur text-center md:text-left">
+                    <div class="text-3xl md:text-4xl font-extrabold text-brandCyan mb-1">4</div>
+                    <div class="text-xs text-slate-400 font-medium uppercase tracking-wider">Победивших Гранта</div>
+                </div>
+                <div class="bg-slate-800/60 p-6 rounded-xl border border-slate-700/80 backdrop-blur text-center md:text-left">
+                    <div class="text-3xl md:text-4xl font-extrabold text-brandOrange mb-1">500+</div>
+                    <div class="text-xs text-slate-400 font-medium uppercase tracking-wider">Благополучателей</div>
+                </div>
+                <div class="bg-slate-800/60 p-6 rounded-xl border border-slate-700/80 backdrop-blur text-center md:text-left">
+                    <div class="text-3xl md:text-4xl font-extrabold text-white mb-1">5</div>
+                    <div class="text-xs text-slate-400 font-medium uppercase tracking-wider">Муниципалитетов РК</div>
+                </div>
+                <div class="bg-slate-800/60 p-6 rounded-xl border border-slate-700/80 backdrop-blur text-center md:text-left">
+                    <div class="text-3xl md:text-4xl font-extrabold text-brandCyan mb-1">100%</div>
+                    <div class="text-xs text-slate-400 font-medium uppercase tracking-wider">Адаптированные методики</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция «Миссия и Направления» -->
+    <section id="mission" class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-brandDark mb-4">Наша миссия</h2>
+                <p class="text-slate-600 leading-relaxed">
+                    Создать доступную и поддерживающую среду для оздоровления, активного долголетия и социальной вовлеченности жителей всех возрастов на всей территории Республики Коми.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 bg-brandLight rounded-2xl border border-slate-200/80 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-sky-100 text-brandCyan rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-person-walking"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Физическая активность</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Адаптированные тренировки, скандинавская ходьба, ОФП, суставная гимнастика и укрепление здоровья под руководством профессионалов.
+                    </p>
+                </div>
+
+                <div class="p-6 bg-brandLight rounded-2xl border border-slate-200/80 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-orange-100 text-brandOrange rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Цифровая безопасность</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Обучение работе со смартфонами, сервисами «Госуслуги», навигацией (2ГИС) и защите старшего поколения от мошенников.
+                    </p>
+                </div>
+
+                <div class="p-6 bg-brandLight rounded-2xl border border-slate-200/80 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-slate-200 text-brandDark rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Социальное комьюнити</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Преодоление одиночества через групповые настольные игры, совместные мероприятия, общественно полезный труд и взаимопомощь.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция «Руководство и Команда» -->
+    <section id="team" class="py-16 px-4 bg-brandLight">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-brandDark mb-4">Руководство организации</h2>
+                <p class="text-slate-600">Профессиональный подход и многолетний опыт в сфере физической культуры, спорта и социально значимых проектов.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 max-w-4xl mx-auto grid md:grid-cols-3 gap-8 items-center">
+                <div class="text-center">
+                    <div class="w-32 h-32 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden flex items-center justify-center text-slate-400 text-4xl">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Мартынова О. А.</h3>
+                    <p class="text-xs text-brandCyan font-semibold uppercase tracking-wider">Директор АНО «ДВИЖ»</p>
+                </div>
+                <div class="md:col-span-2 space-y-3 text-sm text-slate-600">
+                    <p class="font-semibold text-brandDark">Дипломированный специалист по физической культуре и спорту (СГУ им. Питирима Сорокина).</p>
+                    <ul class="space-y-2 list-disc list-inside text-xs">
+                        <li>Опыт работы в физкультурно-оздоровительной сфере более 20 лет.</li>
+                        <li>Старший преподаватель кафедры медико-биологических основ ФКиС СыктГУ (2009–2025).</li>
+                        <li>Автор и руководитель 4 грантовых программ, реализованных в Республике Коми.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция «Открытость и Документы» -->
+    <section id="docs" class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-brandDark mb-4">Прозрачность и документы</h2>
+                <p class="text-slate-600">Мы работаем строго в соответствии с законодательством РФ и принципами открытости НКО.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="p-4 border border-slate-200 rounded-xl flex items-center space-x-3">
+                    <i class="fa-solid fa-file-pdf text-red-500 text-2xl"></i>
+                    <div>
+                        <div class="font-bold text-sm">Устав АНО «ДВИЖ»</div>
+                        <div class="text-xs text-slate-500">Зарегистрирован Минюстом</div>
+                    </div>
+                </div>
+                <div class="p-4 border border-slate-200 rounded-xl flex items-center space-x-3">
+                    <i class="fa-solid fa-file-contract text-brandCyan text-2xl"></i>
+                    <div>
+                        <div class="font-bold text-sm">ОГРН 1231100002957</div>
+                        <div class="text-xs text-slate-500">Запись от 01.08.2023</div>
+                    </div>
+                </div>
+                <div class="p-4 border border-slate-200 rounded-xl flex items-center space-x-3">
+                    <i class="fa-solid fa-building text-brandOrange text-2xl"></i>
+                    <div>
+                        <div class="font-bold text-sm">ИНН 1101177172</div>
+                        <div class="text-xs text-slate-500">КПП 110101001</div>
+                    </div>
+                </div>
+                <div class="p-4 border border-slate-200 rounded-xl flex items-center space-x-3">
+                    <i class="fa-solid fa-award text-amber-500 text-2xl"></i>
+                    <div>
+                        <div class="font-bold text-sm">Реестр НКО</div>
+                        <div class="text-xs text-slate-500">Минюст России</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал и Контакты -->
+    <footer id="contacts" class="bg-brandDark text-white pt-12 pb-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 mb-8 text-sm">
+            <div>
+                <h4 class="font-bold text-base mb-3 text-brandCyan">АНО «ДВИЖ»</h4>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                    Коми региональная автономная некоммерческая организация по повышению физической активности граждан и популяризации здорового образа жизни «Движение — Жизнь».
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-base mb-3 text-brandCyan">Контакты и адрес</h4>
+                <ul class="space-y-2 text-slate-300 text-xs">
+                    <li><i class="fa-solid fa-location-dot mr-2 text-brandOrange"></i>167001, Республика Коми, г. Сыктывкар, ул. Коммунистическая, д. 48, кв. 21</li>
+                    <li><i class="fa-solid fa-envelope mr-2 text-brandOrange"></i>dvizhrk@mail.ru</li>
+                    <li><i class="fa-solid fa-phone mr-2 text-brandOrange"></i>+7 (904) 861-67-17</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-base mb-3 text-brandCyan">Социальные сети</h4>
+                <a href="https://vk.com/dviz_komi" target="_blank" class="inline-flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-xs transition border border-slate-700">
+                    <i class="fa-brands fa-vk text-blue-400 text-base"></i>
+                    <span>Сообщество ВКонтакте</span>
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+            © 2023–2026 АНО «ДВИЖ» (ano-dvizh.ru). Все права защищены.
+        </div>
+    </footer>
+
+</body>
+</html>
