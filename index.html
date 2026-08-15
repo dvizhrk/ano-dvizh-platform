@@ -49,6 +49,10 @@
             <!-- Навигация -->
             <nav class="hidden md:flex space-x-8 font-medium text-sm text-slate-700">
                 <a href="index.html" class="text-brandCyan font-semibold">Главная</a>
+                <a href="platform.html" class="text-brandOrange font-bold hover:text-orange-600 transition flex items-center space-x-1">
+                    <i class="fa-solid fa-bolt text-xs"></i>
+                    <span>Платформа здоровья</span>
+                </a>
                 <a href="projects.html" class="hover:text-brandCyan transition">Проекты и Гранты</a>
                 <a href="#mission" class="hover:text-brandCyan transition">Миссия</a>
                 <a href="#team" class="hover:text-brandCyan transition">Команда</a>
@@ -79,11 +83,12 @@
                     Коми региональная автономная некоммерческая организация по повышению физической активности граждан и популяризации здорового образа жизни «Движение — Жизнь».
                 </p>
                 <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 justify-center md:justify-start">
-                    <a href="projects.html" class="bg-brandOrange hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-lg text-center transition shadow-lg">
-                        Наши проекты
+                    <a href="platform.html" class="bg-brandOrange hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-lg text-center transition shadow-lg flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-play text-xs"></i>
+                        <span>Войти на платформу</span>
                     </a>
-                    <a href="#docs" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-lg text-center transition border border-slate-700">
-                        Официальные документы
+                    <a href="projects.html" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-lg text-center transition border border-slate-700">
+                        Наши проекты
                     </a>
                 </div>
             </div>
@@ -106,6 +111,44 @@
                     <div class="text-3xl md:text-4xl font-extrabold text-brandCyan mb-1">100%</div>
                     <div class="text-xs text-slate-400 font-medium uppercase tracking-wider">Адаптированные методики</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция презентации Цифровой Платформы -->
+    <section class="py-16 px-4 bg-gradient-to-r from-brandDark via-brandSlate to-slate-900 text-white relative overflow-hidden border-y border-slate-700">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-8 space-y-4">
+                <div class="inline-flex items-center space-x-2 bg-brandCyan/20 text-brandCyan px-3 py-1 rounded-full text-xs font-semibold">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <span>Цифровая PWA-платформа АНО «ДВИЖ»</span>
+                </div>
+                <h2 class="text-2xl md:text-4xl font-black leading-tight">
+                    Интерактивная платформа производственной гимнастики и здоровья
+                </h2>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+                    Онлайн-комплексы 5-минутных видеоразминок для сотрудников предприятий и граждан: снятие усталости на рабочем месте, профилактика профессиональных заболеваний, дневник самочувствия и рейтинги команд.
+                </p>
+                <div class="grid sm:grid-cols-3 gap-4 pt-2">
+                    <div class="bg-white/5 border border-white/10 p-3 rounded-xl">
+                        <div class="text-brandCyan font-bold text-sm mb-1"><i class="fa-solid fa-play-circle mr-1"></i> 5 минут в день</div>
+                        <div class="text-xs text-slate-400">Быстрые видеоуроки для офиса и производства</div>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 p-3 rounded-xl">
+                        <div class="text-brandOrange font-bold text-sm mb-1"><i class="fa-solid fa-heart-pulse mr-1"></i> Самочувствие</div>
+                        <div class="text-xs text-slate-400">Мониторинг энергии и снятия напряжения</div>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 p-3 rounded-xl">
+                        <div class="text-brandCyan font-bold text-sm mb-1"><i class="fa-solid fa-trophy mr-1"></i> Геймификация</div>
+                        <div class="text-xs text-slate-400">Командные рейтинги предприятий Коми</div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-4 text-center md:text-right">
+                <a href="platform.html" class="inline-flex flex-col items-center justify-center bg-gradient-to-r from-brandOrange to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-extrabold px-8 py-5 rounded-2xl shadow-xl transition transform hover:-translate-y-1 w-full sm:w-auto">
+                    <span class="text-lg">Открыть платформу</span>
+                    <span class="text-xs font-normal text-orange-100 mt-1">Доступ со смартфона и ПК</span>
+                </a>
             </div>
         </div>
     </section>
@@ -164,8 +207,8 @@
 
             <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 max-w-4xl mx-auto grid md:grid-cols-3 gap-8 items-center">
                 <div class="text-center">
-                    <div class="w-32 h-32 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden flex items-center justify-center text-slate-400 text-4xl">
-                        <i class="fa-solid fa-user-tie"></i>
+                    <div class="w-32 h-32 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden flex items-center justify-center text-slate-400 text-4xl shadow-inner">
+                        <img src="img/olga.jpg" alt="Мартынова Ольга Алексеевна" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-tie\'></i>';">
                     </div>
                     <h3 class="font-bold text-lg">Мартынова О. А.</h3>
                     <p class="text-xs text-brandCyan font-semibold uppercase tracking-wider">Директор АНО «ДВИЖ»</p>
@@ -249,7 +292,7 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
-            © 2023–2026 АНО «ДВИЖ» (ano-dvizh.ru). Все права защищены.
+            © 2023–2026<a href="admin.html" class="text-slate-500 hover:text-slate-500 cursor-default select-none focus:outline-none" tabindex="-1">.</a> АНО «ДВИЖ» (ano-dvizh.ru). Все права защищены.
         </div>
     </footer>
 
