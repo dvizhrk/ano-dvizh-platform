@@ -3,604 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Платформа РЕСУРС | Управление и сервисы</title>
+    <title>Цифровая платформа здоровья | АНО «ДВИЖ»</title>
     
-    <!-- PWA & Mobile Meta -->
-    <meta name="theme-color" content="#121824">
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#0F172A">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <style>
-        :root {
-            --bg-primary: #0b0f19;
-            --bg-secondary: #121826;
-            --bg-card: #1b2333;
-            --bg-hover: #242f45;
-            --accent-emerald: #10b981;
-            --accent-cyan: #06b6d4;
-            --accent-purple: #8b5cf6;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --sidebar-width: 280px;
-            --transition: all 0.25s ease-in-out;
-            --radius-md: 14px;
-            --radius-sm: 8px;
-        }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            overflow-x: hidden;
-        }
-
-        /* Sidebar Navigation (Desktop) */
-        .sidebar {
-            width: var(--sidebar-width);
-            background-color: var(--bg-secondary);
-            border-right: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 100;
-            transition: var(--transition);
-        }
-
-        .sidebar-brand {
-            padding: 24px 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .brand-logo {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent-emerald), var(--accent-cyan));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .brand-text h2 {
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .brand-text span {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .nav-menu {
-            list-style: none;
-            padding: 20px 12px;
-            flex: 1;
-            overflow-y: auto;
-        }
-
-        .nav-item {
-            margin-bottom: 6px;
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 12px 16px;
-            color: var(--text-muted);
-            text-decoration: none;
-            border-radius: var(--radius-sm);
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .nav-link:hover, .nav-link.active {
-            background-color: var(--bg-hover);
-            color: #fff;
-        }
-
-        .nav-link.active {
-            background: linear-gradient(90deg, rgba(16, 185, 129, 0.15), transparent);
-            border-left: 3px solid var(--accent-emerald);
-            color: var(--accent-emerald);
-        }
-
-        .nav-link i {
-            font-size: 1.1rem;
-            width: 24px;
-            text-align: center;
-        }
-
-        /* Main Workspace */
-        .main-wrapper {
-            margin-left: var(--sidebar-width);
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            transition: var(--transition);
-        }
-
-        .top-navbar {
-            height: 70px;
-            background-color: rgba(18, 24, 38, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 28px;
-            position: sticky;
-            top: 0;
-            z-index: 90;
-        }
-
-        .page-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .top-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--accent-emerald);
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent-emerald);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent-emerald);
-        }
-
-        .content-area {
-            padding: 28px;
-            flex: 1;
-        }
-
-        /* Metrics / Quick Stats */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
-            margin-bottom: 28px;
-        }
-
-        .metric-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .metric-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 12px;
-        }
-
-        .metric-value {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        /* Dynamic Grid Layout */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 24px;
-        }
-
-        .panel {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 24px;
-        }
-
-        .panel-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .panel-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        /* Action Buttons & Controls */
-        .btn-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 12px;
-            margin-top: 14px;
-        }
-
-        .btn {
-            background-color: var(--bg-hover);
-            color: #fff;
-            border: 1px solid var(--border-color);
-            padding: 12px;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-align: center;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: var(--transition);
-        }
-
-        .btn:hover {
-            background-color: #2e3c59;
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #10b981, #059669);
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #059669, #047857);
-        }
-
-        /* Activity / Module List */
-        .list-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .list-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 16px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-        }
-
-        .list-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .list-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg-hover);
-            color: var(--accent-cyan);
-        }
-
-        /* Mobile Navigation Bottom Bar */
-        .bottom-nav {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 64px;
-            background-color: rgba(18, 24, 38, 0.95);
-            backdrop-filter: blur(16px);
-            border-top: 1px solid var(--border-color);
-            z-index: 1000;
-            justify-content: space-around;
-            align-items: center;
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-
-        .bottom-nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.75rem;
-            flex: 1;
-            padding: 6px 0;
-            transition: var(--transition);
-        }
-
-        .bottom-nav-item.active, .bottom-nav-item:hover {
-            color: var(--accent-emerald);
-        }
-
-        .bottom-nav-item i {
-            font-size: 1.25rem;
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 900px) {
-            .dashboard-grid {
-                grid-template-columns: 1fr;
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#0F172A',
+                        brandSlate: '#1E293B',
+                        brandCyan: '#0EA5E9',
+                        brandOrange: '#F97316',
+                        brandLight: '#F8FAFC'
+                    }
+                }
             }
         }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                display: none;
-            }
-
-            .main-wrapper {
-                margin-left: 0;
-                padding-bottom: 74px;
-            }
-
-            .top-navbar {
-                padding: 0 16px;
-            }
-
-            .content-area {
-                padding: 16px;
-            }
-
-            .bottom-nav {
-                display: flex;
-            }
-
-            .btn-group {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-    </style>
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="bg-brandLight text-brandDark font-sans antialiased min-h-screen flex flex-col pb-20 md:pb-0">
 
-    <!-- Desktop Sidebar -->
-    <aside class="sidebar">
-        <div class="sidebar-brand">
-            <div class="brand-logo">
-                <i class="fa-solid fa-bolt"></i>
-            </div>
-            <div class="brand-text">
-                <h2>РЕСУРС</h2>
-                <span>Автоматизация & Сервисы</span>
-            </div>
-        </div>
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="#" class="nav-link active">
-                    <i class="fa-solid fa-gauge-high"></i>
-                    Панель управления
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-users-gear"></i>
-                    CRM & Расписание
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-robot"></i>
-                    Боты и Автоматизация
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-credit-card"></i>
-                    Платежи и Модули
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-server"></i>
-                    Yandex Cloud API
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-sliders"></i>
-                    Настройки системы
-                </a>
-            </li>
-        </ul>
-    </aside>
-
-    <!-- Main Content Container -->
-    <div class="main-wrapper">
-        <header class="top-navbar">
-            <h1 class="page-title">Обзор платформы</h1>
-            <div class="top-actions">
-                <div class="status-badge">
-                    <div class="status-dot"></div>
-                    Система онлайн
-                </div>
-            </div>
-        </header>
-
-        <main class="content-area">
-            <!-- Key Metrics Grid -->
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-header">
-                        <span>Активность модулей</span>
-                        <i class="fa-solid fa-network-wired"></i>
-                    </div>
-                    <div class="metric-value">100%</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-header">
-                        <span>CRM интеграция</span>
-                        <i class="fa-solid fa-calendar-check"></i>
-                    </div>
-                    <div class="metric-value">Активна</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-header">
-                        <span>Серверные функции</span>
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <div class="metric-value">Python 3.12</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-header">
-                        <span>Режим работы</span>
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <div class="metric-value">24/7 Авто</div>
-                </div>
-            </div>
-
-            <!-- Dashboard Content Layout -->
-            <div class="dashboard-grid">
-                <!-- Main Controls Panel -->
-                <div class="panel">
-                    <div class="panel-header">
-                        <h3 class="panel-title">Быстрое управление модулями</h3>
-                    </div>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
-                        Прямой доступ к управлению сервисами экосистемы, запуску вебхуков и синхронизации баз данных.
-                    </p>
-                    <div class="btn-group">
-                        <button class="btn btn-primary" onclick="handleAction('sync_crm')">
-                            <i class="fa-solid fa-arrows-rotate"></i> Синхронизация
-                        </button>
-                        <button class="btn" onclick="handleAction('check_bots')">
-                            <i class="fa-solid fa-robot"></i> Тест ботов
-                        </button>
-                        <button class="btn" onclick="handleAction('view_logs')">
-                            <i class="fa-solid fa-terminal"></i> Логи функций
-                        </button>
-                        <button class="btn" onclick="handleAction('payments_flow')">
-                            <i class="fa-solid fa-wallet"></i> Баланс & Чеки
-                        </button>
-                    </div>
-
-                    <div style="margin-top: 28px;">
-                        <h4 style="font-size: 0.95rem; margin-bottom: 12px;">Статус сервисов</h4>
-                        <div class="list-container">
-                            <div class="list-row">
-                                <div class="list-info">
-                                    <div class="list-icon"><i class="fa-brands fa-vk"></i></div>
-                                    <div>
-                                        <div style="font-weight: 500;">VK Community Bot</div>
-                                        <div style="font-size: 0.8rem; color: var(--text-muted);">Обработка сообщений сообщества</div>
-                                    </div>
-                                </div>
-                                <span style="color: var(--accent-emerald); font-size: 0.85rem;"><i class="fa-solid fa-circle-check"></i> Запущен</span>
-                            </div>
-                            <div class="list-row">
-                                <div class="list-info">
-                                    <div class="list-icon"><i class="fa-solid fa-database"></i></div>
-                                    <div>
-                                        <div style="font-weight: 500;">CRM Hook Listener</div>
-                                        <div style="font-size: 0.8rem; color: var(--text-muted);">Автоматическая фиксация записей</div>
-                                    </div>
-                                </div>
-                                <span style="color: var(--accent-emerald); font-size: 0.85rem;"><i class="fa-solid fa-circle-check"></i> Запущен</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Side Widget -->
-                <div class="panel">
-                    <div class="panel-header">
-                        <h3 class="panel-title">Мониторинг</h3>
-                    </div>
-                    <div class="list-container">
-                        <div class="list-row" style="background: transparent; border-color: rgba(255,255,255,0.04);">
-                            <span style="color: var(--text-muted); font-size: 0.85rem;">Безопасность API:</span>
-                            <span style="font-weight: 600; color: var(--accent-emerald);">Защищено</span>
-                        </div>
-                        <div class="list-row" style="background: transparent; border-color: rgba(255,255,255,0.04);">
-                            <span style="color: var(--text-muted); font-size: 0.85rem;">Окружение:</span>
-                            <span style="font-weight: 600;">Production</span>
-                        </div>
-                        <div class="list-row" style="background: transparent; border-color: rgba(255,255,255,0.04);">
-                            <span style="color: var(--text-muted); font-size: 0.85rem;">Интерфейс:</span>
-                            <span style="font-weight: 600;">Adaptive PWA</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+    <!-- Верхняя статус-плашка -->
+    <div class="bg-brandDark text-white text-xs py-2 px-4 text-center border-b border-slate-700">
+        <span class="inline-block bg-brandOrange text-white font-bold px-2 py-0.5 rounded mr-2">ГРАНТЫ 2024–2027</span>
+        Цифровая IT-экосистема производственной гимнастики и активного долголетия Республики Коми
     </div>
 
-    <!-- Mobile Bottom Bar -->
-    <nav class="bottom-nav">
-        <a href="#" class="bottom-nav-item active">
-            <i class="fa-solid fa-gauge-high"></i>
-            <span>Обзор</span>
+    <!-- Шапка платформы -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
+            <!-- Логотип -->
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brandDark via-brandCyan to-brandOrange flex items-center justify-center text-white font-bold text-xl shadow">
+                    <i class="fa-solid font-bold text-lg">Д</i>
+                </div>
+                <div>
+                    <span class="text-lg md:text-xl font-extrabold tracking-tight text-brandDark block">АНО «ДВИЖ»</span>
+                    <span class="text-[9px] md:text-[10px] uppercase tracking-widest text-slate-500 block">Платформа Здоровья</span>
+                </div>
+            </a>
+
+            <!-- Навигация (Desktop) -->
+            <nav class="hidden md:flex space-x-6 font-medium text-sm text-slate-700">
+                <a href="index.html" class="hover:text-brandCyan transition">Главный сайт</a>
+                <a href="#catalog" class="text-brandCyan font-semibold">Каталог разминок</a>
+                <a href="#tracker" class="hover:text-brandCyan transition">Самочувствие</a>
+                <a href="#rating" class="hover:text-brandCyan transition">Рейтинг предприятий</a>
+            </nav>
+
+            <!-- Профиль / Вход -->
+            <div class="flex items-center space-x-3">
+                <button onclick="switchTab('profile')" class="flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 text-brandDark px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-semibold transition border border-slate-200">
+                    <i class="fa-solid fa-user text-brandCyan"></i>
+                    <span class="hidden sm:inline">Личный кабинет</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основное рабочее пространство -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full space-y-8">
+
+        <!-- Приветствие и быстрый прогресс -->
+        <section class="bg-gradient-to-r from-brandDark to-brandSlate text-white rounded-2xl p-6 md:p-8 shadow-lg relative overflow-hidden">
+            <div class="relative z-10 grid md:grid-cols-3 gap-6 items-center">
+                <div class="md:col-span-2 space-y-2">
+                    <div class="inline-flex items-center space-x-2 bg-brandCyan/20 text-brandCyan px-3 py-1 rounded-full text-xs font-semibold">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <span>Здоровая нация — сильная Россия</span>
+                    </div>
+                    <h1 class="text-2xl md:text-3xl font-extrabold">Сделайте перерыв на 5-минутную разминку</h1>
+                    <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+                        Регулярная производственная гимнастика снижает утомляемость, защищает позвоночник и повышает продуктивность на весь рабочий день.
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10 text-center">
+                    <div class="text-xs text-slate-300 uppercase font-semibold">Ваш результат за неделю</div>
+                    <div class="text-3xl font-black text-brandOrange my-1">4 / 5 <span class="text-xs font-normal text-slate-300">дней</span></div>
+                    <div class="text-xs text-brandCyan font-medium">+120 баллов в рейтинг</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ключевые показатели активности (Сводка) -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-sky-100 text-brandCyan flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-person-walking"></i>
+                </div>
+                <div>
+                    <div class="text-xl md:text-2xl font-bold text-brandDark">15 мин</div>
+                    <div class="text-xs text-slate-500">Время разминок</div>
+                </div>
+            </div>
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-orange-100 text-brandOrange flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+                <div>
+                    <div class="text-xl md:text-2xl font-bold text-brandDark">3 сессии</div>
+                    <div class="text-xs text-slate-500">Завершено сегодня</div>
+                </div>
+            </div>
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-slate-100 text-brandDark flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-building-user"></i>
+                </div>
+                <div>
+                    <div class="text-xl md:text-2xl font-bold text-brandDark">3 место</div>
+                    <div class="text-xs text-slate-500">Рейтинг отдела</div>
+                </div>
+            </div>
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <div>
+                    <div class="text-xl md:text-2xl font-bold text-brandDark">ГТО: 80%</div>
+                    <div class="text-xs text-slate-500">Готовность к нормам</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Каталог видеоразминок -->
+        <section id="catalog" class="space-y-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-extrabold text-brandDark">Каталог видеокомплексов</h2>
+                    <p class="text-xs md:text-sm text-slate-500">Методики разработаны экспертами по адаптивной физической культуре</p>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Карточка 1 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div class="p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-sky-100 text-brandCyan text-xs font-bold px-2.5 py-1 rounded-md">Офис & ПК</span>
+                            <span class="text-xs text-slate-500"><i class="fa-regular fa-clock mr-1"></i>5 минут</span>
+                        </div>
+                        <h3 class="font-bold text-base text-brandDark">Разгрузка шеи и плечевого пояса</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Снятие спазма трапециевидных мышц, улучшение притока крови к голове и защита от головных болей при сидячей работе.</p>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="startWorkout('Шея и плечи')" class="w-full bg-brandCyan hover:bg-sky-600 text-white font-semibold py-2.5 rounded-xl text-sm transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-play text-xs"></i>
+                            <span>Начать разминку</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div class="p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-orange-100 text-brandOrange text-xs font-bold px-2.5 py-1 rounded-md">Производство</span>
+                            <span class="text-xs text-slate-500"><i class="fa-regular fa-clock mr-1"></i>5 минут</span>
+                        </div>
+                        <h3 class="font-bold text-base text-brandDark">Здоровая спина и поясница</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Комплекс для работников стоячих профессий и физического труда: снятие осевой нагрузки и укрепление мышечного корсета.</p>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="startWorkout('Спина и поясница')" class="w-full bg-brandOrange hover:bg-orange-600 text-white font-semibold py-2.5 rounded-xl text-sm transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-play text-xs"></i>
+                            <span>Начать разминку</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div class="p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-md">50+ и Долголетие</span>
+                            <span class="text-xs text-slate-500"><i class="fa-regular fa-clock mr-1"></i>7 минут</span>
+                        </div>
+                        <h3 class="font-bold text-base text-brandDark">Мягкая суставная гимнастика</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Безопасная суставная мобильность, нормализация давления, улучшение координации и профилактика артрозов.</p>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="startWorkout('Суставная гимнастика')" class="w-full bg-brandDark hover:bg-slate-800 text-white font-semibold py-2.5 rounded-xl text-sm transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-play text-xs"></i>
+                            <span>Начать разминку</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Дневник самочувствия и Корпоративный рейтинг -->
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Трекер самочувствия -->
+            <section id="tracker" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-sky-100 text-brandCyan flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-brandDark">Дневник самочувствия</h3>
+                        <p class="text-xs text-slate-500">Зафиксируйте состояние после разминки</p>
+                    </div>
+                </div>
+                
+                <p class="text-xs text-slate-600">Как вы себя чувствуете прямо сейчас?</p>
+                <div class="grid grid-cols-3 gap-3">
+                    <button onclick="recordMood('Бодрость')" class="p-3 border border-slate-200 rounded-xl hover:border-brandCyan text-center text-xs font-semibold transition bg-slate-50 hover:bg-sky-50">
+                        <i class="fa-regular fa-face-smile text-brandCyan text-xl block mb-1"></i>
+                        Полон сил
+                    </button>
+                    <button onclick="recordMood('Нормально')" class="p-3 border border-slate-200 rounded-xl hover:border-brandCyan text-center text-xs font-semibold transition bg-slate-50 hover:bg-sky-50">
+                        <i class="fa-regular fa-face-meh text-slate-500 text-xl block mb-1"></i>
+                        Нормально
+                    </button>
+                    <button onclick="recordMood('Усталость')" class="p-3 border border-slate-200 rounded-xl hover:border-brandCyan text-center text-xs font-semibold transition bg-slate-50 hover:bg-sky-50">
+                        <i class="fa-regular fa-face-tired text-brandOrange text-xl block mb-1"></i>
+                        Устал
+                    </button>
+                </div>
+            </section>
+
+            <!-- Корпоративный рейтинг -->
+            <section id="rating" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-orange-100 text-brandOrange flex items-center justify-center text-lg font-bold">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base text-brandDark">Рейтинг предприятий</h3>
+                            <p class="text-xs text-slate-500">Республика Коми</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-2 text-xs">
+                    <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-100">
+                        <div class="flex items-center space-x-3">
+                            <span class="font-bold text-brandOrange">1</span>
+                            <span class="font-semibold text-brandDark">Лесопромышленный комбинат</span>
+                        </div>
+                        <span class="font-bold text-brandCyan">1 420 баллов</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-100">
+                        <div class="flex items-center space-x-3">
+                            <span class="font-bold text-slate-500">2</span>
+                            <span class="font-semibold text-brandDark">Администрация Сыктывкара</span>
+                        </div>
+                        <span class="font-bold text-brandCyan">1 280 баллов</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-100">
+                        <div class="flex items-center space-x-3">
+                            <span class="font-bold text-slate-500">3</span>
+                            <span class="font-semibold text-brandDark">Сыктывкарский водоканал</span>
+                        </div>
+                        <span class="font-bold text-brandCyan">950 баллов</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Нижняя панель навигации (Только для смартфонов) -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 flex justify-around py-2 z-50 shadow-lg">
+        <a href="#catalog" class="flex flex-col items-center text-xs text-brandCyan">
+            <i class="fa-solid fa-play-circle text-lg"></i>
+            <span>Разминки</span>
         </a>
-        <a href="#" class="bottom-nav-item">
-            <i class="fa-solid fa-users-gear"></i>
-            <span>CRM</span>
+        <a href="#tracker" class="flex flex-col items-center text-xs text-slate-500 hover:text-brandCyan">
+            <i class="fa-solid fa-heart-pulse text-lg"></i>
+            <span>Здоровье</span>
         </a>
-        <a href="#" class="bottom-nav-item">
-            <i class="fa-solid fa-robot"></i>
-            <span>Боты</span>
+        <a href="#rating" class="flex flex-col items-center text-xs text-slate-500 hover:text-brandCyan">
+            <i class="fa-solid fa-trophy text-lg"></i>
+            <span>Рейтинг</span>
         </a>
-        <a href="#" class="bottom-nav-item">
-            <i class="fa-solid fa-credit-card"></i>
-            <span>Оплата</span>
-        </a>
-        <a href="#" class="bottom-nav-item">
-            <i class="fa-solid fa-sliders"></i>
-            <span>Опции</span>
+        <a href="index.html" class="flex flex-col items-center text-xs text-slate-500 hover:text-brandCyan">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span>Сайт</span>
         </a>
     </nav>
 
+    <!-- Простой скрипт для демонстрации интерактива -->
     <script>
-        function handleAction(actionKey) {
-            console.log('Action triggered:', actionKey);
-            // Точка вызова API-функций или логики Яндекс Облака
+        function startWorkout(name) {
+            alert('Запуск видеокомплекса: "' + name + '". Приготовьтесь к 5 минутам активного отдыха!');
+        }
+
+        function recordMood(status) {
+            alert('Ваше самочувствие ("' + status + '") сохранено в личный дневник здоровья!');
         }
     </script>
 </body>
