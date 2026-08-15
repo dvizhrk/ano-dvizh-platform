@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Админ-панель платформы | АНО «ДВИЖ»</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#0F172A',
+                        brandSlate: '#1E293B',
+                        brandCyan: '#0EA5E9',
+                        brandOrange: '#F97316',
+                        brandLight: '#F8FAFC'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-brandLight text-brandDark font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Верхняя статус-плашка -->
+    <div class="bg-brandDark text-white text-xs py-2 px-4 text-center border-b border-slate-700">
+        <span class="inline-block bg-brandOrange text-white font-bold px-2 py-0.5 rounded mr-2">АДМИН-ПАНЕЛЬ</span>
+        Режим управления проектом и сбора грантовой статистики
+    </div>
+
+    <!-- Шапка админки -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="platform.html" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brandDark via-brandCyan to-brandOrange flex items-center justify-center text-white font-bold text-xl shadow">
+                    <i class="fa-solid font-bold text-lg">Д</i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-brandDark block">АНО «ДВИЖ»</span>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 block">Панель управления</span>
+                </div>
+            </a>
+
+            <div class="flex items-center space-x-4">
+                <span class="text-xs bg-sky-100 text-brandCyan px-3 py-1.5 rounded-lg font-semibold">
+                    <i class="fa-solid fa-shield-halved mr-1"></i> Руководитель / Администратор
+                </span>
+                <a href="platform.html" class="bg-slate-100 hover:bg-slate-200 text-brandDark px-4 py-2 rounded-lg text-xs font-semibold transition border border-slate-200">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> На платформу
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основное содержимое админки -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
+
+        <!-- Сводные показатели проекта (для отчетов ФПГ) -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="text-xs text-slate-500 font-semibold uppercase">Охват пользователей</div>
+                <div class="text-2xl md:text-3xl font-black text-brandDark mt-1">128 чел.</div>
+                <div class="text-xs text-brandCyan font-medium mt-1"><i class="fa-solid fa-arrow-up"></i> +12 за неделю</div>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="text-xs text-slate-500 font-semibold uppercase">Подключено предприятий</div>
+                <div class="text-2xl md:text-3xl font-black text-brandOrange mt-1">5 ед.</div>
+                <div class="text-xs text-slate-600 font-medium mt-1">План: не менее 5</div>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="text-xs text-slate-500 font-semibold uppercase">Проведено сессий</div>
+                <div class="text-2xl md:text-3xl font-black text-brandDark mt-1">1 420</div>
+                <div class="text-xs text-brandCyan font-medium mt-1">Выполненных зарядок</div>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="text-xs text-slate-500 font-semibold uppercase">Грантовый статус</div>
+                <div class="text-2xl md:text-3xl font-black text-emerald-600 mt-1">Активен</div>
+                <div class="text-xs text-slate-600 font-medium mt-1">Фонд президентских грантов</div>
+            </div>
+        </section>
+
+        <!-- Основная рабочая сетка админки -->
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            <!-- Левая колонка: Управление предприятиями и база участников (2 блока) -->
+            <div class="md:col-span-2 space-y-8">
+                
+                <!-- Список подключенных предприятий -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h2 class="font-bold text-lg text-brandDark">Предприятия-участники</h2>
+                        <button onclick="openAddOrgModal()" class="bg-brandCyan hover:bg-sky-600 text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5 shadow-sm">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Добавить организацию</span>
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-600">
+                            <thead class="bg-slate-50 text-slate-500 uppercase font-semibold border-b border-slate-200">
+                                <tr>
+                                    <th class="p-3">Организация</th>
+                                    <th class="p-3">Сотрудники</th>
+                                    <th class="p-3">Активность</th>
+                                    <th class="p-3 text-right">Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="p-3 font-semibold text-brandDark">Лесопромышленный комбинат</td>
+                                    <td class="p-3">45 чел.</td>
+                                    <td class="p-3 text-brandCyan font-bold">Высокая (88%)</td>
+                                    <td class="p-3 text-right">
+                                        <button class="text-slate-400 hover:text-brandDark px-2 py-1"><i class="fa-solid fa-pen"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-brandDark">Администрация Сыктывкара</td>
+                                    <td class="p-3">32 чел.</td>
+                                    <td class="p-3 text-brandCyan font-bold">Средняя (74%)</td>
+                                    <td class="p-3 text-right">
+                                        <button class="text-slate-400 hover:text-brandDark px-2 py-1"><i class="fa-solid fa-pen"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-brandDark">Сыктывкарский водоканал</td>
+                                    <td class="p-3">28 чел.</td>
+                                    <td class="p-3 text-brandCyan font-bold">Высокая (91%)</td>
+                                    <td class="p-3 text-right">
+                                        <button class="text-slate-400 hover:text-brandDark px-2 py-1"><i class="fa-solid fa-pen"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Управление видеоконтентом -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h2 class="font-bold text-lg text-brandDark">Загрузка видеоразминок</h2>
+                        <button onclick="openUploadModal()" class="bg-brandDark hover:bg-slate-800 text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5 shadow-sm">
+                            <i class="fa-solid fa-video"></i>
+                            <span>Добавить видео</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-sky-100 text-brandCyan flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-brandDark">Разгрузка шеи и плечевого пояса</div>
+                                    <div class="text-slate-500">Категория: Офис & ПК • 5 мин</div>
+                                </div>
+                            </div>
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-semibold">Опубликовано</span>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-orange-100 text-brandOrange flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-brandDark">Здоровая спина и поясница</div>
+                                    <div class="text-slate-500">Категория: Производство • 5 мин</div>
+                                </div>
+                            </div>
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-semibold">Опубликовано</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Правая колонка: Экспорт отчетов и настройки ботов -->
+            <div class="space-y-8">
+                
+                <!-- Экспорт для ФПГ -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="font-bold text-base text-brandDark">Отчетность по гранту</h3>
+                    <p class="text-xs text-slate-500">Выгрузка сводных данных для формирования квартального отчета в Фонд президентских грантов.</p>
+                    
+                    <div class="space-y-2 pt-2">
+                        <button onclick="exportReport('Excel')" class="w-full bg-slate-100 hover:bg-slate-200 text-brandDark font-semibold py-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-2 border border-slate-200">
+                            <i class="fa-solid fa-file-excel text-emerald-600"></i>
+                            <span>Скачать отчет в Excel (XLSX)</span>
+                        </button>
+                        <button onclick="exportReport('PDF')" class="w-full bg-slate-100 hover:bg-slate-200 text-brandDark font-semibold py-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-2 border border-slate-200">
+                            <i class="fa-solid fa-file-pdf text-red-500"></i>
+                            <span>Справка о благополучателях (PDF)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Управление ботами и рассылками -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="font-bold text-base text-brandDark">Интеграция с ботами</h3>
+                    <p class="text-xs text-slate-500">Статус отправки умных напоминаний о разминке через Telegram и VK.</p>
+                    
+                    <div class="space-y-3 text-xs">
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="font-semibold text-brandDark"><i class="fa-brands fa-telegram text-sky-500 mr-1.5"></i> Telegram Бот</span>
+                            <span class="text-emerald-600 font-bold"><i class="fa-solid fa-circle text-[8px] mr-1"></i> Активен</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="font-semibold text-brandDark"><i class="fa-brands fa-vk text-blue-500 mr-1.5"></i> VK Бот</span>
+                            <span class="text-emerald-600 font-bold"><i class="fa-solid fa-circle text-[8px] mr-1"></i> Активен</span>
+                        </div>
+                    </div>
+
+                    <button onclick="triggerMailing()" class="w-full bg-brandDark hover:bg-slate-800 text-white font-semibold py-2.5 rounded-xl text-xs transition shadow-sm">
+                        Отправить утреннее напоминание
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Скрипты интерактива админки -->
+    <script>
+        function openAddOrgModal() {
+            alert('Открытие формы добавления нового предприятия-партнера в проект.');
+        }
+
+        function openUploadModal() {
+            alert('Открытие формы загрузки нового видеокомплекса и привязки к категории.');
+        }
+
+        function exportReport(type) {
+            alert('Сформирован и успешно скачан отчет в формате ' + type + ' для проверки.');
+        }
+
+        function triggerMailing() {
+            alert('Успешно! Утренние напоминания о разминке разосланы участникам в Telegram и VK.');
+        }
+    </script>
+</body>
+</html>
