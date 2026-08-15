@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Платформа РЕСУРС | Управление и сервисы</title>
+    
+    <!-- PWA & Mobile Meta -->
+    <meta name="theme-color" content="#121824">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #121826;
+            --bg-card: #1b2333;
+            --bg-hover: #242f45;
+            --accent-emerald: #10b981;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --sidebar-width: 280px;
+            --transition: all 0.25s ease-in-out;
+            --radius-md: 14px;
+            --radius-sm: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            overflow-x: hidden;
+        }
+
+        /* Sidebar Navigation (Desktop) */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .sidebar-brand {
+            padding: 24px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-emerald), var(--accent-cyan));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .brand-text h2 {
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-text span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 20px 12px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .nav-item {
+            margin-bottom: 6px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--bg-hover);
+            color: #fff;
+        }
+
+        .nav-link.active {
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.15), transparent);
+            border-left: 3px solid var(--accent-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .nav-link i {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Main Workspace */
+        .main-wrapper {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+
+        .top-navbar {
+            height: 70px;
+            background-color: rgba(18, 24, 38, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            position: sticky;
+            top: 0;
+            z-index: 90;
+        }
+
+        .page-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-emerald);
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-emerald);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-emerald);
+        }
+
+        .content-area {
+            padding: 28px;
+            flex: 1;
+        }
+
+        /* Metrics / Quick Stats */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .metric-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .metric-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .metric-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* Dynamic Grid Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+
+        .panel {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 24px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .panel-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Action Buttons & Controls */
+        .btn-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .btn {
+            background-color: var(--bg-hover);
+            color: #fff;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: #2e3c59;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+        }
+
+        /* Activity / Module List */
+        .list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .list-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+        }
+
+        .list-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .list-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-hover);
+            color: var(--accent-cyan);
+        }
+
+        /* Mobile Navigation Bottom Bar */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background-color: rgba(18, 24, 38, 0.95);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid var(--border-color);
+            z-index: 1000;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .bottom-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            flex: 1;
+            padding: 6px 0;
+            transition: var(--transition);
+        }
+
+        .bottom-nav-item.active, .bottom-nav-item:hover {
+            color: var(--accent-emerald);
+        }
+
+        .bottom-nav-item i {
+            font-size: 1.25rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main-wrapper {
+                margin-left: 0;
+                padding-bottom: 74px;
+            }
+
+            .top-navbar {
+                padding: 0 16px;
+            }
+
+            .content-area {
+                padding: 16px;
+            }
+
+            .bottom-nav {
+                display: flex;
+            }
+
+            .btn-group {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Desktop Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-logo">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="brand-text">
+                <h2>РЕСУРС</h2>
+                <span>Автоматизация & Сервисы</span>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    Панель управления
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-users-gear"></i>
+                    CRM & Расписание
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-robot"></i>
+                    Боты и Автоматизация
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-credit-card"></i>
+                    Платежи и Модули
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-server"></i>
+                    Yandex Cloud API
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fa-solid fa-sliders"></i>
+                    Настройки системы
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Container -->
+    <div class="main-wrapper">
+        <header class="top-navbar">
+            <h1 class="page-title">Обзор платформы</h1>
+            <div class="top-actions">
+                <div class="status-badge">
+                    <div class="status-dot"></div>
+                    Система онлайн
+                </div>
+            </div>
+        </header>
+
+        <main class="content-area">
+            <!-- Key Metrics Grid -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span>Активность модулей</span>
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <div class="metric-value">100%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span>CRM интеграция</span>
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <div class="metric-value">Активна</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span>Серверные функции</span>
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div class="metric-value">Python 3.12</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span>Режим работы</span>
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="metric-value">24/7 Авто</div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content Layout -->
+            <div class="dashboard-grid">
+                <!-- Main Controls Panel -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h3 class="panel-title">Быстрое управление модулями</h3>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
+                        Прямой доступ к управлению сервисами экосистемы, запуску вебхуков и синхронизации баз данных.
+                    </p>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="handleAction('sync_crm')">
+                            <i class="fa-solid fa-arrows-rotate"></i> Синхронизация
+                        </button>
+                        <button class="btn" onclick="handleAction('check_bots')">
+                            <i class="fa-solid fa-robot"></i> Тест ботов
+                        </button>
+                        <button class="btn" onclick="handleAction('view_logs')">
+                            <i class="fa-solid fa-terminal"></i> Логи функций
+                        </button>
+                        <button class="btn" onclick="handleAction('payments_flow')">
+                            <i class="fa-solid fa-wallet"></i> Баланс & Чеки
+                        </button>
+                    </div>
+
+                    <div style="margin-top: 28px;">
+                        <h4 style="font-size: 0.95rem; margin-bottom: 12px;">Статус сервисов</h4>
+                        <div class="list-container">
+                            <div class="list-row">
+                                <div class="list-info">
+                                    <div class="list-icon"><i class="fa-brands fa-vk"></i></div>
+                                    <div>
+                                        <div style="font-weight: 500;">VK Community Bot</div>
+                                        <div style="font-size: 0.8rem; color: var(--text-muted);">Обработка сообщений сообщества</div>
+                                    </div>
+                                </div>
+                                <span style="color: var(--accent-emerald); font-size: 0.85rem;"><i class="fa-solid fa-circle-check"></i> Запущен</span>
+                            </div>
+                            <div class="list-row">
+                                <div class="list-info">
+                                    <div class="list-icon"><i class="fa-solid fa-database"></i></div>
+                                    <div>
+                                        <div style="font-weight: 500;">CRM Hook Listener</div>
+                                        <div style="font-size: 0.8rem; color: var(--text-muted);">Автоматическая фиксация записей</div>
+                                    </div>
+                                </div>
+                                <span style="color: var(--accent-emerald); font-size: 0.85rem;"><i class="fa-solid fa-circle-check"></i> Запущен</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Widget -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h3 class="panel-title">Мониторинг</h3>
+                    </div>
+                    <div class="list-container">
+                        <div class="list-row" style="background: transparent; border-color: rgba(255,255,255,0.04);">
+                            <span style="color: var(--text-muted); font-size: 0.85rem;">Безопасность API:</span>
+                            <span style="font-weight: 600; color: var(--accent-emerald);">Защищено</span>
+                        </div>
+                        <div class="list-row" style="background: transparent; border-color: rgba(255,255,255,0.04);">
+                            <span style="color: var(--text-muted); font-size: 0.85rem;">Окружение:</span>
+                            <span style="font-weight: 600;">Production</span>
+                        </div>
+                        <div class="list-row" style="background: transparent; border-color: rgba(255,255,255,0.04);">
+                            <span style="color: var(--text-muted); font-size: 0.85rem;">Интерфейс:</span>
+                            <span style="font-weight: 600;">Adaptive PWA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Bottom Bar -->
+    <nav class="bottom-nav">
+        <a href="#" class="bottom-nav-item active">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Обзор</span>
+        </a>
+        <a href="#" class="bottom-nav-item">
+            <i class="fa-solid fa-users-gear"></i>
+            <span>CRM</span>
+        </a>
+        <a href="#" class="bottom-nav-item">
+            <i class="fa-solid fa-robot"></i>
+            <span>Боты</span>
+        </a>
+        <a href="#" class="bottom-nav-item">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Оплата</span>
+        </a>
+        <a href="#" class="bottom-nav-item">
+            <i class="fa-solid fa-sliders"></i>
+            <span>Опции</span>
+        </a>
+    </nav>
+
+    <script>
+        function handleAction(actionKey) {
+            console.log('Action triggered:', actionKey);
+            // Точка вызова API-функций или логики Яндекс Облака
+        }
+    </script>
+</body>
+</html>
