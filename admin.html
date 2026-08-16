@@ -33,6 +33,9 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        .touch-scroll {
+            -webkit-overflow-scrolling: touch;
+        }
     </style>
 </head>
 <body class="bg-brandLight text-brandDark font-sans antialiased min-h-screen flex flex-col w-full max-w-full overflow-x-hidden">
@@ -43,7 +46,7 @@
         <span>Управление экосистемой АНО «ДВИЖ»</span>
     </div>
 
-    <!-- Шапка админки (ровно на 100% ширины) -->
+    <!-- Шапка админки -->
     <header class="bg-white shadow-sm sticky top-0 z-40 border-b border-slate-200 w-full">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
             <!-- Логотип -->
@@ -75,7 +78,7 @@
 
         <!-- 1. Сводные показатели (горизонтальная лента) -->
         <section class="w-full">
-            <div class="flex gap-3 overflow-x-auto no-scrollbar pb-1 snap-x snap-mandatory">
+            <div class="flex gap-3 overflow-x-auto no-scrollbar touch-scroll pb-1 snap-x snap-mandatory">
                 <div class="min-w-[150px] sm:min-w-[200px] flex-1 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm shrink-0 snap-start">
                     <div class="text-[10px] text-slate-500 font-semibold uppercase">Охват</div>
                     <div class="text-xl sm:text-2xl font-black text-brandDark mt-1">128 чел.</div>
@@ -99,7 +102,7 @@
             </div>
         </section>
 
-        <!-- 2. Предприятия-участники (горизонтальная карусель карточек) -->
+        <!-- 2. Предприятия-участники -->
         <section class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm w-full space-y-4">
             <div class="flex items-center justify-between">
                 <div>
@@ -112,10 +115,10 @@
                 </button>
             </div>
 
-            <!-- Горизонтальный контейнер организаций -->
-            <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2 snap-x snap-mandatory">
+            <!-- Контейнер скролла организаций -->
+            <div class="flex gap-3 overflow-x-auto no-scrollbar touch-scroll pb-2 snap-x snap-mandatory">
                 
-                <div class="w-[260px] sm:w-[280px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start space-y-2 flex flex-col justify-between">
+                <div class="min-w-[260px] sm:min-w-[280px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start space-y-2 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-1">
                             <span class="text-[10px] bg-sky-100 text-brandCyan font-bold px-2 py-0.5 rounded">Производство</span>
@@ -130,7 +133,7 @@
                     </div>
                 </div>
 
-                <div class="w-[260px] sm:w-[280px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start space-y-2 flex flex-col justify-between">
+                <div class="min-w-[260px] sm:min-w-[280px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start space-y-2 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-1">
                             <span class="text-[10px] bg-purple-100 text-purple-700 font-bold px-2 py-0.5 rounded">Госслужба</span>
@@ -145,7 +148,7 @@
                     </div>
                 </div>
 
-                <div class="w-[260px] sm:w-[280px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start space-y-2 flex flex-col justify-between">
+                <div class="min-w-[260px] sm:min-w-[280px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start space-y-2 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-1">
                             <span class="text-[10px] bg-orange-100 text-brandOrange font-bold px-2 py-0.5 rounded">ЖКХ & Сервис</span>
@@ -163,7 +166,7 @@
             </div>
         </section>
 
-        <!-- 3. Каталог тренировок и видеокомплексов (горизонтальная карусель) -->
+        <!-- 3. Каталог тренировок и видеокомплексов -->
         <section class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm w-full space-y-4">
             <div class="flex items-center justify-between">
                 <div>
@@ -176,10 +179,10 @@
                 </button>
             </div>
 
-            <!-- Горизонтальный контейнер тренировок -->
-            <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2 snap-x snap-mandatory">
+            <!-- Контейнер скролла тренировок -->
+            <div class="flex gap-3 overflow-x-auto no-scrollbar touch-scroll pb-2 snap-x snap-mandatory">
                 
-                <div class="w-[250px] sm:w-[270px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start flex flex-col justify-between space-y-3">
+                <div class="min-w-[250px] sm:min-w-[270px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start flex flex-col justify-between space-y-3">
                     <div class="space-y-2">
                         <span class="text-[10px] bg-sky-100 text-brandCyan font-bold px-2 py-0.5 rounded">5 минут</span>
                         <div class="font-bold text-sm text-brandDark leading-snug">Разгрузка шеи и плечевого пояса</div>
@@ -188,7 +191,7 @@
                     <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-semibold self-start">Опубликовано</span>
                 </div>
 
-                <div class="w-[250px] sm:w-[270px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start flex flex-col justify-between space-y-3">
+                <div class="min-w-[250px] sm:min-w-[270px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start flex flex-col justify-between space-y-3">
                     <div class="space-y-2">
                         <span class="text-[10px] bg-orange-100 text-brandOrange font-bold px-2 py-0.5 rounded">5 минут</span>
                         <div class="font-bold text-sm text-brandDark leading-snug">Здоровая спина и поясница</div>
@@ -197,7 +200,7 @@
                     <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-semibold self-start">Опубликовано</span>
                 </div>
 
-                <div class="w-[250px] sm:w-[270px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start flex flex-col justify-between space-y-3">
+                <div class="min-w-[250px] sm:min-w-[270px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start flex flex-col justify-between space-y-3">
                     <div class="space-y-2">
                         <span class="text-[10px] bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded">7 минут</span>
                         <div class="font-bold text-sm text-brandDark leading-snug">Мягкая суставная гимнастика</div>
@@ -206,7 +209,7 @@
                     <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-semibold self-start">Опубликовано</span>
                 </div>
 
-                <div class="w-[250px] sm:w-[270px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start flex flex-col justify-between space-y-3">
+                <div class="min-w-[250px] sm:min-w-[270px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start flex flex-col justify-between space-y-3">
                     <div class="space-y-2">
                         <span class="text-[10px] bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded">25–50 минут</span>
                         <div class="font-bold text-sm text-brandDark leading-snug">Полноценные активные тренировки</div>
@@ -215,7 +218,7 @@
                     <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-semibold self-start">Опубликовано</span>
                 </div>
 
-                <div class="w-[250px] sm:w-[270px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start flex flex-col justify-between space-y-3">
+                <div class="min-w-[250px] sm:min-w-[270px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start flex flex-col justify-between space-y-3">
                     <div class="space-y-2">
                         <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded">15–50 минут</span>
                         <div class="font-bold text-sm text-brandDark leading-snug">Здоровая осанка и стретчинг</div>
@@ -224,7 +227,7 @@
                     <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-semibold self-start">Опубликовано</span>
                 </div>
 
-                <div class="w-[250px] sm:w-[270px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start flex flex-col justify-between space-y-3">
+                <div class="min-w-[250px] sm:min-w-[270px] bg-slate-50 p-4 rounded-xl border border-slate-200 shrink-0 snap-start flex flex-col justify-between space-y-3">
                     <div class="space-y-2">
                         <span class="text-[10px] bg-teal-100 text-teal-700 font-bold px-2 py-0.5 rounded">7–10 минут</span>
                         <div class="font-bold text-sm text-brandDark leading-snug">Дыхательная гимнастика</div>
@@ -236,57 +239,87 @@
             </div>
         </section>
 
-        <!-- 4. Питание и Медитации (два горизонтальных свайп-блока) -->
+        <!-- 4. Питание и Медитации (полноценный скролл карточек) -->
         <div class="grid lg:grid-cols-2 gap-6 w-full">
             
             <!-- Питание -->
-            <section class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4 w-full">
+            <section class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4 w-full min-w-0">
                 <div class="flex items-center justify-between">
-                    <h3 class="font-bold text-sm sm:text-base text-brandDark flex items-center space-x-2">
-                        <i class="fa-solid fa-bowl-food text-brandOrange"></i>
-                        <span>Гид по питанию</span>
-                    </h3>
-                    <button onclick="openUploadModal('nutrition')" class="text-xs text-brandOrange font-semibold hover:underline">+ Добавить</button>
+                    <div>
+                        <h3 class="font-bold text-sm sm:text-base text-brandDark flex items-center space-x-2">
+                            <i class="fa-solid fa-bowl-food text-brandOrange"></i>
+                            <span>Гид по питанию</span>
+                        </h3>
+                        <p class="text-[11px] text-slate-500">Листайте материалы вправо →</p>
+                    </div>
+                    <button onclick="openUploadModal('nutrition')" class="text-xs text-brandOrange font-semibold hover:underline shrink-0">+ Добавить</button>
                 </div>
                 
-                <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2 snap-x snap-mandatory">
-                    <div class="w-[200px] bg-slate-50 p-3 rounded-xl border border-slate-200 shrink-0 snap-start space-y-1">
-                        <div class="font-bold text-xs text-brandDark truncate">Тарелка энергии</div>
-                        <div class="text-[10px] text-slate-500">Баланс БЖУ и сил</div>
+                <!-- Горизонтальная лента питания с гарантированным скроллом -->
+                <div class="flex gap-3 overflow-x-auto no-scrollbar touch-scroll pb-2 snap-x snap-mandatory w-full">
+                    <div class="min-w-[210px] max-w-[210px] bg-slate-50 p-3.5 rounded-xl border border-slate-200 shrink-0 snap-start space-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="font-bold text-xs text-brandDark">Тарелка энергии</div>
+                            <div class="text-[11px] text-slate-500 mt-0.5">Баланс БЖУ и продуктивности</div>
+                        </div>
+                        <span class="text-[10px] text-emerald-600 font-semibold flex items-center"><i class="fa-solid fa-check mr-1"></i> Активно</span>
                     </div>
-                    <div class="w-[200px] bg-slate-50 p-3 rounded-xl border border-slate-200 shrink-0 snap-start space-y-1">
-                        <div class="font-bold text-xs text-brandDark truncate">Защита суставов</div>
-                        <div class="text-[10px] text-slate-500">Коллаген и минералы</div>
+
+                    <div class="min-w-[210px] max-w-[210px] bg-slate-50 p-3.5 rounded-xl border border-slate-200 shrink-0 snap-start space-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="font-bold text-xs text-brandDark">Защита суставов</div>
+                            <div class="text-[11px] text-slate-500 mt-0.5">Коллаген, омега-3 и минералы</div>
+                        </div>
+                        <span class="text-[10px] text-emerald-600 font-semibold flex items-center"><i class="fa-solid fa-check mr-1"></i> Активно</span>
                     </div>
-                    <div class="w-[200px] bg-slate-50 p-3 rounded-xl border border-slate-200 shrink-0 snap-start space-y-1">
-                        <div class="font-bold text-xs text-brandDark truncate">Водный баланс</div>
-                        <div class="text-[10px] text-slate-500">Нормы и перекусы</div>
+
+                    <div class="min-w-[210px] max-w-[210px] bg-slate-50 p-3.5 rounded-xl border border-slate-200 shrink-0 snap-start space-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="font-bold text-xs text-brandDark">Водный баланс</div>
+                            <div class="text-[11px] text-slate-500 mt-0.5">Нормы воды и легкие перекусы</div>
+                        </div>
+                        <span class="text-[10px] text-emerald-600 font-semibold flex items-center"><i class="fa-solid fa-check mr-1"></i> Активно</span>
                     </div>
                 </div>
             </section>
 
             <!-- Медитации & Подкасты -->
-            <section class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4 w-full">
+            <section class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4 w-full min-w-0">
                 <div class="flex items-center justify-between">
-                    <h3 class="font-bold text-sm sm:text-base text-brandDark flex items-center space-x-2">
-                        <i class="fa-solid fa-headphones text-purple-600"></i>
-                        <span>Медитации & Аудио</span>
-                    </h3>
-                    <button onclick="openUploadModal('mindfulness')" class="text-xs text-purple-600 font-semibold hover:underline">+ Добавить</button>
+                    <div>
+                        <h3 class="font-bold text-sm sm:text-base text-brandDark flex items-center space-x-2">
+                            <i class="fa-solid fa-headphones text-purple-600"></i>
+                            <span>Медитации & Аудио</span>
+                        </h3>
+                        <p class="text-[11px] text-slate-500">Листайте аудиопрактики вправо →</p>
+                    </div>
+                    <button onclick="openUploadModal('mindfulness')" class="text-xs text-purple-600 font-semibold hover:underline shrink-0">+ Добавить</button>
                 </div>
                 
-                <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2 snap-x snap-mandatory">
-                    <div class="w-[200px] bg-slate-50 p-3 rounded-xl border border-slate-200 shrink-0 snap-start space-y-1">
-                        <div class="font-bold text-xs text-brandDark truncate">Перезагрузка</div>
-                        <div class="text-[10px] text-slate-500">8 мин • Антистресс</div>
+                <!-- Горизонтальная лента медитаций с гарантированным скроллом -->
+                <div class="flex gap-3 overflow-x-auto no-scrollbar touch-scroll pb-2 snap-x snap-mandatory w-full">
+                    <div class="min-w-[210px] max-w-[210px] bg-slate-50 p-3.5 rounded-xl border border-slate-200 shrink-0 snap-start space-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="font-bold text-xs text-brandDark">Перезагрузка</div>
+                            <div class="text-[11px] text-slate-500 mt-0.5">8 мин • Снятие тревожности</div>
+                        </div>
+                        <span class="text-[10px] text-purple-600 font-semibold flex items-center"><i class="fa-solid fa-play mr-1"></i> Практика</span>
                     </div>
-                    <div class="w-[200px] bg-slate-50 p-3 rounded-xl border border-slate-200 shrink-0 snap-start space-y-1">
-                        <div class="font-bold text-xs text-brandDark truncate">Релаксация для сна</div>
-                        <div class="text-[10px] text-slate-500">12 мин • Глубокий сон</div>
+
+                    <div class="min-w-[210px] max-w-[210px] bg-slate-50 p-3.5 rounded-xl border border-slate-200 shrink-0 snap-start space-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="font-bold text-xs text-brandDark">Релаксация для сна</div>
+                            <div class="text-[11px] text-slate-500 mt-0.5">12 мин • Глубокий сон</div>
+                        </div>
+                        <span class="text-[10px] text-purple-600 font-semibold flex items-center"><i class="fa-solid fa-play mr-1"></i> Практика</span>
                     </div>
-                    <div class="w-[200px] bg-slate-50 p-3 rounded-xl border border-slate-200 shrink-0 snap-start space-y-1">
-                        <div class="font-bold text-xs text-brandDark truncate">Подкаст №1</div>
-                        <div class="text-[10px] text-slate-500">15 мин • Долголетие</div>
+
+                    <div class="min-w-[210px] max-w-[210px] bg-slate-50 p-3.5 rounded-xl border border-slate-200 shrink-0 snap-start space-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="font-bold text-xs text-brandDark">Подкаст №1</div>
+                            <div class="text-[11px] text-slate-500 mt-0.5">15 мин • Здоровье Севера</div>
+                        </div>
+                        <span class="text-[10px] text-purple-600 font-semibold flex items-center"><i class="fa-solid fa-podcast mr-1"></i> Выпуск</span>
                     </div>
                 </div>
             </section>
