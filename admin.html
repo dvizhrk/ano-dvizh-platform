@@ -24,87 +24,109 @@
     </script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </head>
-<body class="bg-brandLight text-brandDark font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-brandLight text-brandDark font-sans antialiased min-h-screen flex flex-col overflow-x-hidden">
 
     <!-- Верхняя статус-плашка -->
-    <div class="bg-brandDark text-white text-xs py-2 px-4 text-center border-b border-slate-700">
-        <span class="inline-block bg-brandOrange text-white font-bold px-2 py-0.5 rounded mr-2">АДМИН-ПАНЕЛЬ</span>
-        Управление экосистемой: тренировки, питание, медитации и отчетность для ФПГ
+    <div class="bg-brandDark text-white text-[11px] sm:text-xs py-2 px-3 sm:px-4 text-center border-b border-slate-700 leading-snug">
+        <span class="inline-block bg-brandOrange text-white font-bold px-2 py-0.5 rounded mr-1 sm:mr-2">АДМИН-ПАНЕЛЬ</span>
+        <span>Управление экосистемой: тренировки, питание, медитации и отчетность для ФПГ</span>
     </div>
 
     <!-- Шапка админки -->
-    <header class="bg-white shadow-sm sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="platform.html" class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brandDark via-brandCyan to-brandOrange flex items-center justify-center text-white font-bold text-xl shadow">
-                    <i class="fa-solid font-bold text-lg">Д</i>
+    <header class="bg-white shadow-sm sticky top-0 z-40 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3 min-h-[4.5rem]">
+            <!-- Логотип -->
+            <a href="platform.html" class="flex items-center space-x-2.5 sm:space-x-3 shrink-0">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-brandDark via-brandCyan to-brandOrange flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow">
+                    <i class="fa-solid font-bold text-base sm:text-lg">Д</i>
                 </div>
                 <div>
-                    <span class="text-xl font-extrabold tracking-tight text-brandDark block">АНО «ДВИЖ»</span>
-                    <span class="text-[10px] uppercase tracking-widest text-slate-500 block">Центр управления платформой</span>
+                    <span class="text-base sm:text-xl font-extrabold tracking-tight text-brandDark block leading-none">АНО «ДВИЖ»</span>
+                    <span class="text-[9px] sm:text-[10px] uppercase tracking-widest text-slate-500 block mt-0.5">Центр управления</span>
                 </div>
             </a>
 
-            <div class="flex items-center space-x-4">
-                <span class="text-xs bg-sky-100 text-brandCyan px-3 py-1.5 rounded-lg font-semibold">
-                    <i class="fa-solid fa-shield-halved mr-1"></i> Администратор
+            <!-- Кнопки действий в шапке -->
+            <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
+                <span class="text-[11px] sm:text-xs bg-sky-100 text-brandCyan px-2.5 sm:px-3 py-1.5 rounded-lg font-semibold flex items-center">
+                    <i class="fa-solid fa-shield-halved mr-1"></i>
+                    <span class="hidden xs:inline">Администратор</span>
                 </span>
-                <a href="platform.html" class="bg-slate-100 hover:bg-slate-200 text-brandDark px-4 py-2 rounded-lg text-xs font-semibold transition border border-slate-200">
-                    <i class="fa-solid fa-arrow-left mr-1"></i> На платформу
+                <a href="platform.html" class="bg-slate-100 hover:bg-slate-200 text-brandDark px-3 sm:px-4 py-1.5 rounded-lg text-xs font-semibold transition border border-slate-200 flex items-center space-x-1">
+                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                    <span>На платформу</span>
                 </a>
             </div>
         </div>
     </header>
 
     <!-- Основное содержимое админки -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
+    <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 flex-1 w-full space-y-6 sm:space-y-8">
 
-        <!-- Сводные показатели проекта (для отчетов ФПГ) -->
-        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                <div class="text-xs text-slate-500 font-semibold uppercase">Охват пользователей</div>
-                <div class="text-2xl md:text-3xl font-black text-brandDark mt-1">128 чел.</div>
-                <div class="text-xs text-brandCyan font-medium mt-1"><i class="fa-solid fa-arrow-up"></i> +12 за неделю</div>
-            </div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                <div class="text-xs text-slate-500 font-semibold uppercase">Подключено предприятий</div>
-                <div class="text-2xl md:text-3xl font-black text-brandOrange mt-1">5 ед.</div>
-                <div class="text-xs text-slate-600 font-medium mt-1">План: не менее 5</div>
-            </div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                <div class="text-xs text-slate-500 font-semibold uppercase">Активность в системе</div>
-                <div class="text-2xl md:text-3xl font-black text-brandDark mt-1">1 420</div>
-                <div class="text-xs text-brandCyan font-medium mt-1">Тренировки & Практики</div>
-            </div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                <div class="text-xs text-slate-500 font-semibold uppercase">Грантовый статус</div>
-                <div class="text-2xl md:text-3xl font-black text-emerald-600 mt-1">Активен</div>
-                <div class="text-xs text-slate-600 font-medium mt-1">Фонд президентских грантов</div>
+        <!-- Сводные показатели проекта (Горизонтальный скролл на мобильных) -->
+        <section class="w-full">
+            <div class="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 overflow-x-auto no-scrollbar pb-2 sm:pb-0 snap-x snap-mandatory">
+                
+                <div class="min-w-[170px] sm:min-w-0 flex-1 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm shrink-0 snap-start">
+                    <div class="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider">Охват пользователей</div>
+                    <div class="text-xl sm:text-2xl lg:text-3xl font-black text-brandDark mt-1 leading-tight">128 чел.</div>
+                    <div class="text-[11px] sm:text-xs text-brandCyan font-medium mt-1"><i class="fa-solid fa-arrow-up text-[10px]"></i> +12 за неделю</div>
+                </div>
+
+                <div class="min-w-[170px] sm:min-w-0 flex-1 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm shrink-0 snap-start">
+                    <div class="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider">Предприятий</div>
+                    <div class="text-xl sm:text-2xl lg:text-3xl font-black text-brandOrange mt-1 leading-tight">5 ед.</div>
+                    <div class="text-[11px] sm:text-xs text-slate-600 font-medium mt-1">План: не менее 5</div>
+                </div>
+
+                <div class="min-w-[170px] sm:min-w-0 flex-1 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm shrink-0 snap-start">
+                    <div class="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider">Активность</div>
+                    <div class="text-xl sm:text-2xl lg:text-3xl font-black text-brandDark mt-1 leading-tight">1 420</div>
+                    <div class="text-[11px] sm:text-xs text-brandCyan font-medium mt-1">Тренировки & Практики</div>
+                </div>
+
+                <div class="min-w-[170px] sm:min-w-0 flex-1 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm shrink-0 snap-start">
+                    <div class="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider">Грант ФПГ</div>
+                    <div class="text-xl sm:text-2xl lg:text-3xl font-black text-emerald-600 mt-1 leading-tight">Активен</div>
+                    <div class="text-[11px] sm:text-xs text-slate-600 font-medium mt-1 truncate">Фонд през. грантов</div>
+                </div>
+
             </div>
         </section>
 
         <!-- Основная рабочая сетка -->
-        <div class="grid lg:grid-cols-3 gap-8">
+        <div class="grid lg:grid-cols-3 gap-6 sm:gap-8">
             
-            <!-- Левая колонка (2/3): Управление всеми модулями контента и предприятиями -->
-            <div class="lg:col-span-2 space-y-8">
+            <!-- Левая колонка (2/3): Управление модулями и предприятиями -->
+            <div class="lg:col-span-2 space-y-6 sm:space-y-8">
                 
                 <!-- Блок 1: Управление предприятиями -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-                    <div class="flex items-center justify-between">
+                <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div>
-                            <h2 class="font-bold text-lg text-brandDark">Предприятия-участники</h2>
-                            <p class="text-xs text-slate-500">Управление организациями и отслеживание вовлеченности коллективов</p>
+                            <h2 class="font-bold text-base sm:text-lg text-brandDark">Предприятия-участники</h2>
+                            <p class="text-xs text-slate-500">Управление организациями и вовлеченность коллективов</p>
                         </div>
-                        <button onclick="openAddOrgModal()" class="bg-brandCyan hover:bg-sky-600 text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5 shadow-sm">
-                            <i class="fa-solid fa-plus"></i>
-                            <span>Добавить организацию</span>
+                        <button onclick="openAddOrgModal()" class="self-start sm:self-auto bg-brandCyan hover:bg-sky-600 text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5 shadow-sm shrink-0">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                            <span>Добавить</span>
                         </button>
                     </div>
 
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-xs text-slate-600">
+                    <!-- Таблица с изолированным горизонтальным скроллом -->
+                    <div class="overflow-x-auto border border-slate-100 rounded-xl">
+                        <table class="w-full text-left text-xs text-slate-600 min-w-[480px]">
                             <thead class="bg-slate-50 text-slate-500 uppercase font-semibold border-b border-slate-200">
                                 <tr>
                                     <th class="p-3">Организация</th>
@@ -119,7 +141,7 @@
                                     <td class="p-3">45 чел.</td>
                                     <td class="p-3 text-brandCyan font-bold">Высокая (88%)</td>
                                     <td class="p-3 text-right">
-                                        <button class="text-slate-400 hover:text-brandDark px-2 py-1"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="text-slate-400 hover:text-brandDark p-1"><i class="fa-solid fa-pen"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -127,7 +149,7 @@
                                     <td class="p-3">32 чел.</td>
                                     <td class="p-3 text-brandCyan font-bold">Средняя (74%)</td>
                                     <td class="p-3 text-right">
-                                        <button class="text-slate-400 hover:text-brandDark px-2 py-1"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="text-slate-400 hover:text-brandDark p-1"><i class="fa-solid fa-pen"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -135,7 +157,7 @@
                                     <td class="p-3">28 чел.</td>
                                     <td class="p-3 text-brandCyan font-bold">Высокая (91%)</td>
                                     <td class="p-3 text-right">
-                                        <button class="text-slate-400 hover:text-brandDark px-2 py-1"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="text-slate-400 hover:text-brandDark p-1"><i class="fa-solid fa-pen"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -144,104 +166,104 @@
                 </div>
 
                 <!-- Блок 2: Управление видеокомплексами и тренировками -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-                    <div class="flex items-center justify-between">
+                <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div>
-                            <h2 class="font-bold text-lg text-brandDark">Каталог тренировок и видеокомплексов</h2>
+                            <h2 class="font-bold text-base sm:text-lg text-brandDark">Каталог тренировок и видеокомплексов</h2>
                             <p class="text-xs text-slate-500">6 направлений: экспресс-зарядки, домашние тренировки, стретчинг и дыхание</p>
                         </div>
-                        <button onclick="openUploadModal('video')" class="bg-brandDark hover:bg-slate-800 text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5 shadow-sm">
-                            <i class="fa-solid fa-video"></i>
-                            <span>Добавить видео</span>
+                        <button onclick="openUploadModal('video')" class="self-start sm:self-auto bg-brandDark hover:bg-slate-800 text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5 shadow-sm shrink-0">
+                            <i class="fa-solid fa-video text-xs"></i>
+                            <span>Добавить</span>
                         </button>
                     </div>
 
                     <div class="space-y-2.5 text-xs">
-                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 rounded-lg bg-sky-100 text-brandCyan flex items-center justify-center font-bold">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100 gap-2">
+                            <div class="flex items-center space-x-3 min-w-0">
+                                <div class="w-8 h-8 rounded-lg bg-sky-100 text-brandCyan flex items-center justify-center font-bold shrink-0">
                                     <i class="fa-solid fa-play text-xs"></i>
                                 </div>
-                                <div>
-                                    <div class="font-bold text-brandDark">Разгрузка шеи и плечевого пояса</div>
-                                    <div class="text-slate-500">Категория: Экспресс-разминка • 5 мин</div>
+                                <div class="min-w-0">
+                                    <div class="font-bold text-brandDark truncate">Разгрузка шеи и плечевого пояса</div>
+                                    <div class="text-slate-500 truncate">Экспресс-разминка • 5 мин</div>
                                 </div>
                             </div>
-                            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md font-semibold">Опубликовано</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md font-semibold shrink-0 text-[11px]">Опубликовано</span>
                         </div>
 
-                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 rounded-lg bg-orange-100 text-brandOrange flex items-center justify-center font-bold">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100 gap-2">
+                            <div class="flex items-center space-x-3 min-w-0">
+                                <div class="w-8 h-8 rounded-lg bg-orange-100 text-brandOrange flex items-center justify-center font-bold shrink-0">
                                     <i class="fa-solid fa-play text-xs"></i>
                                 </div>
-                                <div>
-                                    <div class="font-bold text-brandDark">Здоровая спина и поясница</div>
-                                    <div class="text-slate-500">Категория: Производство • 5 мин</div>
+                                <div class="min-w-0">
+                                    <div class="font-bold text-brandDark truncate">Здоровая спина и поясница</div>
+                                    <div class="text-slate-500 truncate">Производство • 5 мин</div>
                                 </div>
                             </div>
-                            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md font-semibold">Опубликовано</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md font-semibold shrink-0 text-[11px]">Опубликовано</span>
                         </div>
 
-                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100 gap-2">
+                            <div class="flex items-center space-x-3 min-w-0">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold shrink-0">
                                     <i class="fa-solid fa-play text-xs"></i>
                                 </div>
-                                <div>
-                                    <div class="font-bold text-brandDark">Мягкая суставная гимнастика</div>
-                                    <div class="text-slate-500">Категория: 50+ и Долголетие • 7 мин</div>
+                                <div class="min-w-0">
+                                    <div class="font-bold text-brandDark truncate">Мягкая суставная гимнастика</div>
+                                    <div class="text-slate-500 truncate">50+ и Долголетие • 7 мин</div>
                                 </div>
                             </div>
-                            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md font-semibold">Опубликовано</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md font-semibold shrink-0 text-[11px]">Опубликовано</span>
                         </div>
 
-                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 rounded-lg bg-red-100 text-red-600 flex items-center justify-center font-bold">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100 gap-2">
+                            <div class="flex items-center space-x-3 min-w-0">
+                                <div class="w-8 h-8 rounded-lg bg-red-100 text-red-600 flex items-center justify-center font-bold shrink-0">
                                     <i class="fa-solid fa-play text-xs"></i>
                                 </div>
-                                <div>
-                                    <div class="font-bold text-brandDark">Полноценные активные тренировки дома</div>
-                                    <div class="text-slate-500">Категория: Актив & Выносливость • 25–50 мин</div>
+                                <div class="min-w-0">
+                                    <div class="font-bold text-brandDark truncate">Полноценные активные тренировки дома</div>
+                                    <div class="text-slate-500 truncate">Актив & Выносливость • 25–50 мин</div>
                                 </div>
                             </div>
-                            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md font-semibold">Опубликовано</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md font-semibold shrink-0 text-[11px]">Опубликовано</span>
                         </div>
 
-                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100 gap-2">
+                            <div class="flex items-center space-x-3 min-w-0">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold shrink-0">
                                     <i class="fa-solid fa-play text-xs"></i>
                                 </div>
-                                <div>
-                                    <div class="font-bold text-brandDark">Здоровая осанка и стретчинг</div>
-                                    <div class="text-slate-500">Категория: Гибкость & Корсет • 15–50 мин</div>
+                                <div class="min-w-0">
+                                    <div class="font-bold text-brandDark truncate">Здоровая осанка и стретчинг</div>
+                                    <div class="text-slate-500 truncate">Гибкость & Корсет • 15–50 мин</div>
                                 </div>
                             </div>
-                            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md font-semibold">Опубликовано</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md font-semibold shrink-0 text-[11px]">Опубликовано</span>
                         </div>
 
-                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100 gap-2">
+                            <div class="flex items-center space-x-3 min-w-0">
+                                <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center font-bold shrink-0">
                                     <i class="fa-solid fa-play text-xs"></i>
                                 </div>
-                                <div>
-                                    <div class="font-bold text-brandDark">Дыхательная гимнастика и восстановление</div>
-                                    <div class="text-slate-500">Категория: Антистресс & Дыхание • 7–10 мин</div>
+                                <div class="min-w-0">
+                                    <div class="font-bold text-brandDark truncate">Дыхательная гимнастика и восстановление</div>
+                                    <div class="text-slate-500 truncate">Антистресс & Дыхание • 7–10 мин</div>
                                 </div>
                             </div>
-                            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md font-semibold">Опубликовано</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md font-semibold shrink-0 text-[11px]">Опубликовано</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Блок 3: Управление разделами «Питание» и «Медитации/Подкасты» -->
-                <div class="grid sm:grid-cols-2 gap-6">
+                <!-- Блок 3: Питание и Медитации/Подкасты -->
+                <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
                     
                     <!-- Питание -->
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
                         <div class="flex items-center justify-between">
                             <h3 class="font-bold text-sm text-brandDark flex items-center space-x-2">
                                 <i class="fa-solid fa-bowl-food text-brandOrange"></i>
@@ -251,22 +273,22 @@
                         </div>
                         <div class="space-y-2 text-xs">
                             <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
-                                <span class="font-medium text-brandDark">Тарелка энергии и продуктивности</span>
-                                <i class="fa-solid fa-check text-emerald-600"></i>
+                                <span class="font-medium text-brandDark truncate mr-2">Тарелка энергии</span>
+                                <i class="fa-solid fa-check text-emerald-600 shrink-0"></i>
                             </div>
                             <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
-                                <span class="font-medium text-brandDark">Питание для суставов и связок</span>
-                                <i class="fa-solid fa-check text-emerald-600"></i>
+                                <span class="font-medium text-brandDark truncate mr-2">Защита суставов</span>
+                                <i class="fa-solid fa-check text-emerald-600 shrink-0"></i>
                             </div>
                             <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
-                                <span class="font-medium text-brandDark">Водный баланс и умные перекусы</span>
-                                <i class="fa-solid fa-check text-emerald-600"></i>
+                                <span class="font-medium text-brandDark truncate mr-2">Водный баланс</span>
+                                <i class="fa-solid fa-check text-emerald-600 shrink-0"></i>
                             </div>
                         </div>
                     </div>
 
                     <!-- Медитации и Подкасты -->
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
                         <div class="flex items-center justify-between">
                             <h3 class="font-bold text-sm text-brandDark flex items-center space-x-2">
                                 <i class="fa-solid fa-headphones text-purple-600"></i>
@@ -276,16 +298,16 @@
                         </div>
                         <div class="space-y-2 text-xs">
                             <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
-                                <span class="font-medium text-brandDark">Перезагрузка и снятие тревожности</span>
-                                <span class="text-slate-400">8 мин</span>
+                                <span class="font-medium text-brandDark truncate mr-2">Перезагрузка</span>
+                                <span class="text-slate-400 shrink-0">8 мин</span>
                             </div>
                             <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
-                                <span class="font-medium text-brandDark">Вечерняя релаксация для сна</span>
-                                <span class="text-slate-400">12 мин</span>
+                                <span class="font-medium text-brandDark truncate mr-2">Релаксация для сна</span>
+                                <span class="text-slate-400 shrink-0">12 мин</span>
                             </div>
                             <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
-                                <span class="font-medium text-brandDark">Подкаст «Движ к долголетию» №1</span>
-                                <span class="text-slate-400">15 мин</span>
+                                <span class="font-medium text-brandDark truncate mr-2">Подкаст №1</span>
+                                <span class="text-slate-400 shrink-0">15 мин</span>
                             </div>
                         </div>
                     </div>
@@ -294,13 +316,13 @@
 
             </div>
 
-            <!-- Правая колонка (1/3): Грантовая отчетность и боты -->
-            <div class="space-y-8">
+            <!-- Правая колонка (1/3): Грантовая отчетность, самочувствие и боты -->
+            <div class="space-y-6 sm:space-y-8">
                 
                 <!-- Экспорт для ФПГ -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                     <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-orange-100 text-brandOrange flex items-center justify-center text-lg font-bold">
+                        <div class="w-10 h-10 rounded-xl bg-orange-100 text-brandOrange flex items-center justify-center text-lg font-bold shrink-0">
                             <i class="fa-solid fa-file-signature"></i>
                         </div>
                         <div>
@@ -309,10 +331,10 @@
                         </div>
                     </div>
                     <p class="text-xs text-slate-600 leading-relaxed">
-                        Формирование сводных реестров благополучателей и журналов выполненных комплексов упражнений в соответствии с требованиями фонда.
+                        Формирование сводных реестров благополучателей и журналов тренировок по стандартам фонда.
                     </p>
                     
-                    <div class="space-y-2 pt-2">
+                    <div class="space-y-2 pt-1">
                         <button onclick="exportReport('Excel')" class="w-full bg-slate-100 hover:bg-slate-200 text-brandDark font-semibold py-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-2 border border-slate-200">
                             <i class="fa-solid fa-file-excel text-emerald-600"></i>
                             <span>Выгрузить реестр (XLSX)</span>
@@ -324,16 +346,16 @@
                     </div>
                 </div>
 
-                <!-- Мониторинг самочувствия (Сводка данных) -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <!-- Мониторинг самочувствия -->
+                <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                     <h3 class="font-bold text-base text-brandDark flex items-center space-x-2">
                         <i class="fa-solid fa-chart-pie text-brandCyan"></i>
-                        <span>Дневник самочувствия (Сводка)</span>
+                        <span>Дневник самочувствия</span>
                     </h3>
                     <div class="space-y-3 text-xs">
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-slate-600">Полон сил после разминки</span>
+                                <span class="text-slate-600">Полон сил</span>
                                 <span class="font-bold text-brandDark">76%</span>
                             </div>
                             <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
@@ -342,7 +364,7 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-slate-600">Нормальное состояние</span>
+                                <span class="text-slate-600">Нормально</span>
                                 <span class="font-bold text-brandDark">19%</span>
                             </div>
                             <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
@@ -351,7 +373,7 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-slate-600">Усталость сохраняется</span>
+                                <span class="text-slate-600">Усталость</span>
                                 <span class="font-bold text-brandDark">5%</span>
                             </div>
                             <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
@@ -361,13 +383,12 @@
                     </div>
                 </div>
 
-                <!-- Управление ботами и рассылками -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <!-- Управление ботами -->
+                <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                     <h3 class="font-bold text-base text-brandDark flex items-center space-x-2">
                         <i class="fa-solid fa-robot text-brandCyan"></i>
                         <span>Умные напоминания</span>
                     </h3>
-                    <p class="text-xs text-slate-500">Автоматическая рассылка приглашений на зарядку и полезных советов дня.</p>
                     
                     <div class="space-y-2.5 text-xs">
                         <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-100">
@@ -381,7 +402,7 @@
                     </div>
 
                     <button onclick="triggerMailing()" class="w-full bg-brandDark hover:bg-slate-800 text-white font-semibold py-2.5 rounded-xl text-xs transition shadow-sm">
-                        Отправить утреннее напоминание
+                        Отправить напоминание
                     </button>
                 </div>
 
@@ -391,7 +412,7 @@
 
     </main>
 
-    <!-- Скрипты интерактива админки -->
+    <!-- Скрипты интерактива -->
     <script>
         function openAddOrgModal() {
             alert('Открытие формы добавления нового предприятия-партнера в проект.');
