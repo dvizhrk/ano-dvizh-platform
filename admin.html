@@ -30,7 +30,7 @@
     <!-- Верхняя статус-плашка -->
     <div class="bg-brandDark text-white text-xs py-2 px-4 text-center border-b border-slate-700">
         <span class="inline-block bg-brandOrange text-white font-bold px-2 py-0.5 rounded mr-2">АДМИН-ПАНЕЛЬ</span>
-        Режим управления проектом и сбора грантовой статистики
+        Управление экосистемой: тренировки, питание, медитации и отчетность для ФПГ
     </div>
 
     <!-- Шапка админки -->
@@ -42,13 +42,13 @@
                 </div>
                 <div>
                     <span class="text-xl font-extrabold tracking-tight text-brandDark block">АНО «ДВИЖ»</span>
-                    <span class="text-[10px] uppercase tracking-widest text-slate-500 block">Панель управления</span>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 block">Центр управления платформой</span>
                 </div>
             </a>
 
             <div class="flex items-center space-x-4">
                 <span class="text-xs bg-sky-100 text-brandCyan px-3 py-1.5 rounded-lg font-semibold">
-                    <i class="fa-solid fa-shield-halved mr-1"></i> Руководитель / Администратор
+                    <i class="fa-solid fa-shield-halved mr-1"></i> Администратор
                 </span>
                 <a href="platform.html" class="bg-slate-100 hover:bg-slate-200 text-brandDark px-4 py-2 rounded-lg text-xs font-semibold transition border border-slate-200">
                     <i class="fa-solid fa-arrow-left mr-1"></i> На платформу
@@ -73,9 +73,9 @@
                 <div class="text-xs text-slate-600 font-medium mt-1">План: не менее 5</div>
             </div>
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                <div class="text-xs text-slate-500 font-semibold uppercase">Проведено сессий</div>
+                <div class="text-xs text-slate-500 font-semibold uppercase">Активность в системе</div>
                 <div class="text-2xl md:text-3xl font-black text-brandDark mt-1">1 420</div>
-                <div class="text-xs text-brandCyan font-medium mt-1">Выполненных зарядок</div>
+                <div class="text-xs text-brandCyan font-medium mt-1">Тренировки & Практики</div>
             </div>
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                 <div class="text-xs text-slate-500 font-semibold uppercase">Грантовый статус</div>
@@ -84,16 +84,19 @@
             </div>
         </section>
 
-        <!-- Основная рабочая сетка админки -->
-        <div class="grid md:grid-cols-3 gap-8">
+        <!-- Основная рабочая сетка -->
+        <div class="grid lg:grid-cols-3 gap-8">
             
-            <!-- Левая колонка: Управление предприятиями и база участников (2 блока) -->
-            <div class="md:col-span-2 space-y-8">
+            <!-- Левая колонка (2/3): Управление всеми модулями контента и предприятиями -->
+            <div class="lg:col-span-2 space-y-8">
                 
-                <!-- Список подключенных предприятий -->
+                <!-- Блок 1: Управление предприятиями -->
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                     <div class="flex items-center justify-between">
-                        <h2 class="font-bold text-lg text-brandDark">Предприятия-участники</h2>
+                        <div>
+                            <h2 class="font-bold text-lg text-brandDark">Предприятия-участники</h2>
+                            <p class="text-xs text-slate-500">Управление организациями и отслеживание вовлеченности коллективов</p>
+                        </div>
                         <button onclick="openAddOrgModal()" class="bg-brandCyan hover:bg-sky-600 text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5 shadow-sm">
                             <i class="fa-solid fa-plus"></i>
                             <span>Добавить организацию</span>
@@ -140,31 +143,34 @@
                     </div>
                 </div>
 
-                <!-- Управление видеоконтентом -->
+                <!-- Блок 2: Управление видеокомплексами и тренировками -->
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                     <div class="flex items-center justify-between">
-                        <h2 class="font-bold text-lg text-brandDark">Загрузка видеоразминок</h2>
-                        <button onclick="openUploadModal()" class="bg-brandDark hover:bg-slate-800 text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5 shadow-sm">
+                        <div>
+                            <h2 class="font-bold text-lg text-brandDark">Каталог тренировок и видеокомплексов</h2>
+                            <p class="text-xs text-slate-500">6 направлений: экспресс-зарядки, домашние тренировки, стретчинг и дыхание</p>
+                        </div>
+                        <button onclick="openUploadModal('video')" class="bg-brandDark hover:bg-slate-800 text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5 shadow-sm">
                             <i class="fa-solid fa-video"></i>
                             <span>Добавить видео</span>
                         </button>
                     </div>
 
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs">
+                    <div class="space-y-2.5 text-xs">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
                             <div class="flex items-center space-x-3">
                                 <div class="w-8 h-8 rounded-lg bg-sky-100 text-brandCyan flex items-center justify-center font-bold">
                                     <i class="fa-solid fa-play text-xs"></i>
                                 </div>
                                 <div>
                                     <div class="font-bold text-brandDark">Разгрузка шеи и плечевого пояса</div>
-                                    <div class="text-slate-500">Категория: Офис & ПК • 5 мин</div>
+                                    <div class="text-slate-500">Категория: Экспресс-разминка • 5 мин</div>
                                 </div>
                             </div>
-                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-semibold">Опубликовано</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md font-semibold">Опубликовано</span>
                         </div>
 
-                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
                             <div class="flex items-center space-x-3">
                                 <div class="w-8 h-8 rounded-lg bg-orange-100 text-brandOrange flex items-center justify-center font-bold">
                                     <i class="fa-solid fa-play text-xs"></i>
@@ -174,39 +180,196 @@
                                     <div class="text-slate-500">Категория: Производство • 5 мин</div>
                                 </div>
                             </div>
-                            <span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-semibold">Опубликовано</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md font-semibold">Опубликовано</span>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-brandDark">Мягкая суставная гимнастика</div>
+                                    <div class="text-slate-500">Категория: 50+ и Долголетие • 7 мин</div>
+                                </div>
+                            </div>
+                            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md font-semibold">Опубликовано</span>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-red-100 text-red-600 flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-brandDark">Полноценные активные тренировки дома</div>
+                                    <div class="text-slate-500">Категория: Актив & Выносливость • 25–50 мин</div>
+                                </div>
+                            </div>
+                            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md font-semibold">Опубликовано</span>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-brandDark">Здоровая осанка и стретчинг</div>
+                                    <div class="text-slate-500">Категория: Гибкость & Корсет • 15–50 мин</div>
+                                </div>
+                            </div>
+                            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md font-semibold">Опубликовано</span>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-play text-xs"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-brandDark">Дыхательная гимнастика и восстановление</div>
+                                    <div class="text-slate-500">Категория: Антистресс & Дыхание • 7–10 мин</div>
+                                </div>
+                            </div>
+                            <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md font-semibold">Опубликовано</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- Блок 3: Управление разделами «Питание» и «Медитации/Подкасты» -->
+                <div class="grid sm:grid-cols-2 gap-6">
+                    
+                    <!-- Питание -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-sm text-brandDark flex items-center space-x-2">
+                                <i class="fa-solid fa-bowl-food text-brandOrange"></i>
+                                <span>Гид по питанию</span>
+                            </h3>
+                            <button onclick="openUploadModal('nutrition')" class="text-xs text-brandOrange font-semibold hover:underline">+ Добавить</button>
+                        </div>
+                        <div class="space-y-2 text-xs">
+                            <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
+                                <span class="font-medium text-brandDark">Тарелка энергии и продуктивности</span>
+                                <i class="fa-solid fa-check text-emerald-600"></i>
+                            </div>
+                            <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
+                                <span class="font-medium text-brandDark">Питание для суставов и связок</span>
+                                <i class="fa-solid fa-check text-emerald-600"></i>
+                            </div>
+                            <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
+                                <span class="font-medium text-brandDark">Водный баланс и умные перекусы</span>
+                                <i class="fa-solid fa-check text-emerald-600"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Медитации и Подкасты -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-sm text-brandDark flex items-center space-x-2">
+                                <i class="fa-solid fa-headphones text-purple-600"></i>
+                                <span>Медитации & Подкасты</span>
+                            </h3>
+                            <button onclick="openUploadModal('mindfulness')" class="text-xs text-purple-600 font-semibold hover:underline">+ Добавить</button>
+                        </div>
+                        <div class="space-y-2 text-xs">
+                            <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
+                                <span class="font-medium text-brandDark">Перезагрузка и снятие тревожности</span>
+                                <span class="text-slate-400">8 мин</span>
+                            </div>
+                            <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
+                                <span class="font-medium text-brandDark">Вечерняя релаксация для сна</span>
+                                <span class="text-slate-400">12 мин</span>
+                            </div>
+                            <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
+                                <span class="font-medium text-brandDark">Подкаст «Движ к долголетию» №1</span>
+                                <span class="text-slate-400">15 мин</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
-            <!-- Правая колонка: Экспорт отчетов и настройки ботов -->
+            <!-- Правая колонка (1/3): Грантовая отчетность и боты -->
             <div class="space-y-8">
                 
                 <!-- Экспорт для ФПГ -->
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-                    <h3 class="font-bold text-base text-brandDark">Отчетность по гранту</h3>
-                    <p class="text-xs text-slate-500">Выгрузка сводных данных для формирования квартального отчета в Фонд президентских грантов.</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-orange-100 text-brandOrange flex items-center justify-center text-lg font-bold">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base text-brandDark">Отчетность по гранту</h3>
+                            <p class="text-xs text-slate-500">Автоматическая выгрузка для ФПГ</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Формирование сводных реестров благополучателей и журналов выполненных комплексов упражнений в соответствии с требованиями фонда.
+                    </p>
                     
                     <div class="space-y-2 pt-2">
                         <button onclick="exportReport('Excel')" class="w-full bg-slate-100 hover:bg-slate-200 text-brandDark font-semibold py-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-2 border border-slate-200">
                             <i class="fa-solid fa-file-excel text-emerald-600"></i>
-                            <span>Скачать отчет в Excel (XLSX)</span>
+                            <span>Выгрузить реестр (XLSX)</span>
                         </button>
                         <button onclick="exportReport('PDF')" class="w-full bg-slate-100 hover:bg-slate-200 text-brandDark font-semibold py-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-2 border border-slate-200">
                             <i class="fa-solid fa-file-pdf text-red-500"></i>
-                            <span>Справка о благополучателях (PDF)</span>
+                            <span>Справка о результатах (PDF)</span>
                         </button>
+                    </div>
+                </div>
+
+                <!-- Мониторинг самочувствия (Сводка данных) -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="font-bold text-base text-brandDark flex items-center space-x-2">
+                        <i class="fa-solid fa-chart-pie text-brandCyan"></i>
+                        <span>Дневник самочувствия (Сводка)</span>
+                    </h3>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-600">Полон сил после разминки</span>
+                                <span class="font-bold text-brandDark">76%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-brandCyan h-full rounded-full" style="width: 76%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-600">Нормальное состояние</span>
+                                <span class="font-bold text-brandDark">19%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-slate-400 h-full rounded-full" style="width: 19%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-600">Усталость сохраняется</span>
+                                <span class="font-bold text-brandDark">5%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-brandOrange h-full rounded-full" style="width: 5%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Управление ботами и рассылками -->
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-                    <h3 class="font-bold text-base text-brandDark">Интеграция с ботами</h3>
-                    <p class="text-xs text-slate-500">Статус отправки умных напоминаний о разминке через Telegram и VK.</p>
+                    <h3 class="font-bold text-base text-brandDark flex items-center space-x-2">
+                        <i class="fa-solid fa-robot text-brandCyan"></i>
+                        <span>Умные напоминания</span>
+                    </h3>
+                    <p class="text-xs text-slate-500">Автоматическая рассылка приглашений на зарядку и полезных советов дня.</p>
                     
-                    <div class="space-y-3 text-xs">
+                    <div class="space-y-2.5 text-xs">
                         <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-100">
                             <span class="font-semibold text-brandDark"><i class="fa-brands fa-telegram text-sky-500 mr-1.5"></i> Telegram Бот</span>
                             <span class="text-emerald-600 font-bold"><i class="fa-solid fa-circle text-[8px] mr-1"></i> Активен</span>
@@ -234,8 +397,8 @@
             alert('Открытие формы добавления нового предприятия-партнера в проект.');
         }
 
-        function openUploadModal() {
-            alert('Открытие формы загрузки нового видеокомплекса и привязки к категории.');
+        function openUploadModal(category) {
+            alert('Открытие формы добавления контента для категории: ' + category);
         }
 
         function exportReport(type) {
@@ -243,7 +406,7 @@
         }
 
         function triggerMailing() {
-            alert('Успешно! Утренние напоминания о разминке разосланы участникам в Telegram и VK.');
+            alert('Успешно! Утренние напоминания о разминке и здоровье разосланы участникам в Telegram и VK.');
         }
     </script>
 </body>
